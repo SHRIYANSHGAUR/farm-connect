@@ -1,4 +1,7 @@
+/// the   TOPMOST SHOULD HAVE THAT .env  TO KEEP OUR ENCRYPTED PASSWROS SECURE!!
+require('dotenv').config();
 const express = require("express");
+
 const bodyPARSER= require("body-parser");
 const ejs= require("ejs");
 const mongoose = require("mongoose");
@@ -20,14 +23,17 @@ const userSchema= new mongoose.Schema({
  password: String
 
 });
-
+//process.env.SECRET_PASSWORD gets our password from  .env  file   in which we assigned it our password
+var secret=process.env.SECRET_PASSWORD;
 /////ENCRYPTION~~~~~~~~~~~~~~~~
 // but this is very low level security
-const secret= "InformationTeachnology";
 // encrptedFields: []  encryptonly certain fields otherwise itwil encrypt every info...
 userSchema.plugin(encrypt, {secret: secret, encryptedFields: ["password"] });
 // encrypts  at save();
 // decrypts at finf();
+
+
+// save the .gitignore file and add .env FILE IN GITIGNORE 
 
 const User= new mongoose.model("User", userSchema);
 
