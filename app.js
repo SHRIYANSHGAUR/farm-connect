@@ -155,6 +155,7 @@ app.post("/registers", function (req,res) {
 
 
   });
+});
 
 
 
@@ -204,7 +205,7 @@ app.post("/logins", function (req,res) {
 
 
 
- Users.findOne({email: req.body.usernames},function(err,founduser){
+ Users.findOne({emails: req.body.usernames},function(err,founduser){
 
 
    if(!err){//no error
