@@ -38,6 +38,12 @@ const userSchema= new mongoose.Schema({
  password: String
 
 });
+const userSchemas= new mongoose.Schema({
+
+ emails: String,
+ passwords: String
+
+});
 //process.env.SECRET_PASSWORD gets our password from  .env  file   in which we assigned it our password
 //var secret=process.env.SECRET_PASSWORD;
 /////ENCRYPTION~~~~~~~~~~~~~~~~
@@ -53,6 +59,7 @@ const userSchema= new mongoose.Schema({
 const User= new mongoose.model("User", userSchema);
 
 
+const Users= new mongoose.model("Users", userSchemas);
 
 app.get("/", function(req, res)    {
    res.render("home");
@@ -88,6 +95,7 @@ app.post("/register", function (req,res) {
       });
 
 
+
        newUser.save(function (err) {
 
          if(!err){
@@ -103,11 +111,53 @@ app.post("/register", function (req,res) {
        });
 
 
+
+
+
   });
 
 
 
 });
+
+
+
+app.post("/registers", function (req,res) {
+
+
+// provide th password as the 1st  paraameter /// from npm website
+  bcrypt.hash(req.body.passwords, saltRounds, function(err, hash) {
+      // Store hash in your password DB.
+      const newUsers=new Users({
+        emails: req.body.usernames,
+        passwords:hash // this will HASH THE PASSSWORD when thry REGISTER
+
+      });
+
+
+
+       newUsers.save(function (err) {
+
+         if(!err){
+
+      res.render("secrets");
+
+         }
+
+
+         else{
+           console.log(err);
+         }
+       });
+
+
+
+
+
+  });
+
+
+
 
 
 
@@ -125,6 +175,45 @@ app.post("/login", function (req,res) {
         // Load hash from your password DB. fromm npm software
         ///HASHES ANDCOMPARES  FROM OUR DATABASE AFTER  SALTING AND BCRYPTIng
 bcrypt.compare(req.body.password, founduser.password, function(err, result) {
+    // result == true
+    if(result===true){// match username's passwrod from DB(stored earlier) == to the req.body (enterd just now)
+
+      res.render("secret");
+    }
+});
+//  we hash the password again AS HASHING SAME THING GENERATES SAME HASH!  SO we can MATCH THE HASHES OF REGISTER AND LOGIN
+
+      }
+
+   }
+
+
+   else{
+     console.log(err);
+   }
+
+ });
+
+
+
+});
+
+
+
+app.post("/logins", function (req,res) {
+
+
+
+ Users.findOne({email: req.body.usernames},function(err,founduser){
+
+
+   if(!err){//no error
+
+      if(founduser){// foindd a user
+
+        // Load hash from your password DB. fromm npm software
+        ///HASHES ANDCOMPARES  FROM OUR DATABASE AFTER  SALTING AND BCRYPTIng
+bcrypt.compare(req.body.passwords, founduser.passwords, function(err, result) {
     // result == true
     if(result===true){// match username's passwrod from DB(stored earlier) == to the req.body (enterd just now)
 
@@ -147,7 +236,6 @@ bcrypt.compare(req.body.password, founduser.password, function(err, result) {
 
 
 });
-
 
 
 
