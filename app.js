@@ -100,7 +100,7 @@ app.post("/register", function (req,res) {
 
          if(!err){
 
-      res.render("secrets");
+      res.render("secret");
 
          }
 
