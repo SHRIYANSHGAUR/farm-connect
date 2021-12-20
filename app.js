@@ -68,6 +68,9 @@ app.get('/register', function (req, res) {
 app.get('/registers', function (req, res) {
   res.render('registers')
 })
+app.get('/carts', function (req, res) {
+  res.render('carts')
+})
 
 app.post('/register', function (req, res) {
   // provide th password as the 1st  paraameter /// from npm website
