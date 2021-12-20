@@ -72,6 +72,15 @@ app.get('/carts', function (req, res) {
   res.render('carts')
 })
 
+app.get('/cart' , function (req, res) {
+  res.render('cart')
+})
+app.get('/logout' , function (req, res) {
+  res.render('home')
+})
+
+
+
 app.post('/register', function (req, res) {
   // provide th password as the 1st  paraameter /// from npm website
   bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
@@ -173,6 +182,16 @@ app.post('/logins', function (req, res) {
 app.get('/submit', function (req, res) {
   res.render('submit')
 })
+
+
+app.get('/submits', function (req, res) {
+  res.render('submits')
+})
+
+app.get('/ty', function (req, res) {
+  res.render('ty')
+})
+
 
 app.listen(3000, function () {
   console.log('SERVER RUNNING AT  PORT 3000')
