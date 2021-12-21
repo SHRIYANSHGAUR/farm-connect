@@ -294,10 +294,10 @@
                       <p class="card-text">Ragi   Price: Rs 60/kg </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                  <a href="/cart"><button type="button" id="Ragi" class="btn btn-sm btn-outline-secondary" >Add to cart</button></a>
+                  <a href=""><button type="button" id="Ragi" onClick="reply_click(this.id)"  id="Ragi" class="btn btn-sm btn-outline-secondary" >Add to cart</button></a>
 
 
-                    <a href="/submit"> <button type="button" class="btn btn-sm btn-outline-secondary">Buy Now</button></a></div>
+                    <a href="/submit"> <button type="button"  class="btn btn-sm btn-outline-secondary">Buy Now</button></a></div>
                         </div>
                   </div>
                 </div>
@@ -311,7 +311,7 @@
                       <p class="card-text">Bajra  Price: Rs 45/kg </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                  <a href="/cart"><button type="button" id="Bajra" class="btn btn-sm btn-outline-secondary" >Add to cart</button></a>
+                  <a href=""><button type="button"  onClick="reply_click(this.id)"  id="Bajra" class="btn btn-sm btn-outline-secondary" >Add to cart</button></a>
 
 
                     <a href="/submit"> <button type="button" class="btn btn-sm btn-outline-secondary">Buy Now</button></a>
@@ -324,7 +324,36 @@
             </div>
           </div>
 
-          
+
+
+
+
+
+
 
   <hr class="featurette-divider">
+
+  <script type="text/javascript">
+
+var sum=0;
+
+var s=0;
+var myMap = new Map();
+myMap.set("Bajra", 45);
+myMap.set("Ragi", 60);
+myMap.set("MoongDal", 110);
+myMap.set("ArharDal", 60);
+
+    function reply_click(clicked_id)
+    {
+
+      sum = sum + myMap.get(clicked_id);
+
+      alert(clicked_id+ ": Rs."+ myMap.get(clicked_id)+ " Total Amount Payable =" + sum);
+
+    }
+
+
+
+  </script>
 </div>
