@@ -1,6 +1,6 @@
-# Farm-Connect : Connecting the farmers pan-India
+# Farm-Connect : Connecting the farmers pan-India   - HACK-A-SOL 2.0 IIIT RAIPUR
 
-This is an initiative to connect all the farmers of India directly to the markets.
+## This is an initiative to connect all the farmers of India directly to the markets.
 This will ensure that consumers get fresh vegetables at tlow prices right at their doorstep,
 and also help farmers make REAL PROFITS(no middlemen are involved here).
 This project is an attempt to replace the traditional system of buying and purchasing farm greens with a fast, reliable and secure online system.
@@ -23,6 +23,6 @@ MongoDB
 mongoose
 bcrypt
 
-Anyone who wishes to contribute to this most welcome .We love open-source-colab !
+Anyone who wishes to contribute to this is most welcome .We love open-source-colab !
 
 
